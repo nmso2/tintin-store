@@ -5,7 +5,9 @@ body {
 .search-field {
   border: none;
   border-radius: 50px;
-  padding: 5px;
+  width: 151px;
+  padding: 10px 10px;
+  margin:auto;
   outline: none;
 }
 .search-field:hover {
@@ -15,23 +17,25 @@ body {
 .search-box {
   border: 1px solid rgb(3, 118, 211);
   width: 281px;
-  border-radius: 5px;
+  border-radius: 50px;
   margin: auto;
   margin-top: 50px;
   border-right: none;
 }
 .search-button {
-  padding: 10px 50px;
-  border-radius: 25px;
-  margin-left: 20px;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 50px;
+  margin-left: 17px;
 }
 #all-products {
   display: grid;
+  grid-gap: 50px;
   grid-template-columns: repeat(3,1fr);
   /* border: 1px solid black; */
   text-align: center;
   width: 100%;
-  margin: auto;
+  margin-left: 15px;
   align-items: center;
   justify-content: center;
 }
