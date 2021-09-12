@@ -3,8 +3,9 @@ const loadProducts = () => {
   // fetch(url)
   //   .then((response) => response.json())
   //   .then((data) => showProducts(data));
-  const url = `../jdata.json`;
-  fetch('js/jdata.json')
+  const url = `https://raw.githubusercontent.com/ProgrammingHero1/ranga-store-api/main/ranga-api.json?fbclid=IwAR0aCrmtdlL08-9XMNibiIabxu7JCWC31XlXNPFzg_N9OzWN5F3Il37Mmc0`;
+  // js/jdata.json
+  fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
 };

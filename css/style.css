@@ -30,15 +30,15 @@ body {
 }
 #all-products {
   display: grid;
-  grid-gap: 50px;
   grid-template-columns: repeat(3,1fr);
+  grid-gap: 15px;
   /* border: 1px solid black; */
   text-align: center;
   width: 100%;
-  margin-left: 15px;
+  margin-left: 5px;
   align-items: center;
   justify-content: center;
-}
+} 
 
 .single-product {
   padding: 10px;
