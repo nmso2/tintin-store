@@ -14,7 +14,6 @@ loadProducts();
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
-    console.log(product.rating)
     const image = product.image;
     const div = document.createElement("div");
     div.classList.add("col");
@@ -28,12 +27,51 @@ const showProducts = (products) => {
       <p><i class="fas fa-star orange"></i> ${product.rating.rate} (${product.rating.count})</p>
       <div class="buttons">
       <button onclick="addToCart(${product.id},${product.price})" class="btn btn-warning addToCart-btn">Add to cart</button>
-      <button class="details-btn">Details</button></div>
+      <button class="details-btn" onclick="showModal(${product.id})">Details</button></div>
       </div>
       `;
     document.getElementById("all-products").appendChild(div);
+
   }
 };
+
+
+//----------show modal--------//
+const showModal = (id) => {
+  console.log(id)
+  const url = `https://fakestoreapi.com/products/${id}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => modalHtml(data));
+};
+
+const modalHtml = (data) => {
+  document.getElementById('modalId').innerHTML = `<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">${data.title}</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="text-center">
+        <img class="product-image img-fluid" src=${data.image}></img>
+      </div>
+      ${data.description}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button onclick="addToCart(${data.id},${data.price})" class="btn btn-warning addToCart-btn" data-bs-dismiss="modal">Add to cart</button>
+    </div>
+  </div>
+</div>
+</div>`;
+  var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+  myModal.show();
+}
+
+//-----------add to cat---------//
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
@@ -43,6 +81,7 @@ const addToCart = (id, price) => {
   updateTotal();
   document.getElementById("total-Products").innerText = count;
 };
+
 
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
