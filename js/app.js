@@ -71,7 +71,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
   myModal.show();
 }
 
-//-----------add to cat---------//
+//-----------add to cart---------//
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
