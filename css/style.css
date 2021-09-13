@@ -38,12 +38,15 @@ body {
   margin-left: 15px;
   align-items: end;
   justify-content: center;
+  margin-bottom: 10px;
 } 
 
 .single-product {
   padding: 10px;
   transition: 0.6s;
   border-radius: 10px;
+  height: 540px;
+  justify-content: flex-end
 }
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;
@@ -60,7 +63,7 @@ body {
 .buttons{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .details-btn{

@@ -17,7 +17,7 @@ const showProducts = (products) => {
     const image = product.image;
     const div = document.createElement("div");
     div.classList.add("col");
-    div.innerHTML = `<div class="single-product">
+    div.innerHTML = `<div class="single-product card">
       <div>
     <img class="product-image" src=${image}></img>
       </div>
