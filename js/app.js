@@ -1,13 +1,12 @@
 const loadProducts = () => {
-  // const url = `https://fakestoreapi.com/products`;
-  // fetch(url)
-  //   .then((response) => response.json())
-  //   .then((data) => showProducts(data));
-  const url = `https://raw.githubusercontent.com/ProgrammingHero1/ranga-store-api/main/ranga-api.json?fbclid=IwAR0aCrmtdlL08-9XMNibiIabxu7JCWC31XlXNPFzg_N9OzWN5F3Il37Mmc0`;
-  // js/jdata.json
+  const url = `https://fakestoreapi.com/products`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
+  // const url = `https://raw.githubusercontent.com/ProgrammingHero1/ranga-store-api/main/ranga-api.json?fbclid=IwAR0aCrmtdlL08-9XMNibiIabxu7JCWC31XlXNPFzg_N9OzWN5F3Il37Mmc0`;
+  // fetch(url)
+  //   .then((response) => response.json())
+  //   .then((data) => showProducts(data));
 };
 loadProducts();
 
@@ -15,9 +14,10 @@ loadProducts();
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
+    console.log(product.rating)
     const image = product.image;
     const div = document.createElement("div");
-    div.classList.add("product");
+    div.classList.add("col");
     div.innerHTML = `<div class="single-product">
       <div>
     <img class="product-image" src=${image}></img>
@@ -25,8 +25,11 @@ const showProducts = (products) => {
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
       <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <p><i class="fas fa-star orange"></i> ${product.rating.rate} (${product.rating.count})</p>
+      <div class="buttons">
+      <button onclick="addToCart(${product.id},${product.price})" class="btn btn-warning addToCart-btn">Add to cart</button>
+      <button class="details-btn">Details</button></div>
+      </div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
