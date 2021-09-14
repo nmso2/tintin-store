@@ -32,7 +32,6 @@ const showProducts = (products) => {
       </div>
       `;
     document.getElementById("all-products").appendChild(div);
-
   }
 };
 
@@ -136,7 +135,7 @@ const searchProducts = () => {
   document.getElementById("all-products").textContent = '';
   document.getElementById('search-error').style.display = 'none';
   document.getElementById('empty-search-error').style.display = 'none';
-  if (searchInput==='') {
+  if (searchInput === '') {
     document.getElementById('empty-search-error').style.display = 'block';
     document.getElementById('spinner').classList.add("visually-hidden");
     return
@@ -146,22 +145,23 @@ const searchProducts = () => {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-
-      
       const searchProduct = [];
       for (const product of data) {
         if (product.title.toLowerCase().includes(searchInput.toLowerCase())) {
           searchProduct.push(product);
-          document.getElementById("all-products").textContent = '';
           document.getElementById('spinner').classList.add("visually-hidden");
-          showProducts(searchProduct);
+          document.getElementById("all-products").textContent = '';
+          document.getElementById('search-error').style.display = 'none';
         }
         else {
-          document.getElementById("all-products").textContent = '';
+          console.log('tuttut')
           document.getElementById('spinner').classList.add("visually-hidden");
           document.getElementById('search-error').style.display = 'block';
           document.getElementById('empty-search-error').style.display = 'none';
         }
+      }
+      if (searchProduct.length !== 0) {
+        showProducts(searchProduct);
       }
       document.getElementById('input-field').value = '';
     });
