@@ -128,7 +128,7 @@ const updateTotal = () => {
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 
-//search product........
+//............search product........
 
 const searchProducts = () => {
   const searchInput = document.getElementById('input-field').value;
