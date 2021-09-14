@@ -12,6 +12,7 @@ loadProducts();
 
 // show all product in UI 
 const showProducts = (products) => {
+  document.getElementById('search-error').style.display = 'none';
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
     const image = product.image;
@@ -126,3 +127,35 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
+
+//search product........
+
+const searchProducts = () => {
+  const searchInput = document.getElementById('input-field').value;
+  document.getElementById('spinner').classList.remove("visually-hidden");
+  document.getElementById("all-products").textContent = '';
+  document.getElementById('search-error').style.display = 'none';
+  const searchBtn = document.getElementById('search-btn');
+  const url = `https://fakestoreapi.com/products`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+
+      
+      const searchProduct = [];
+      for (const product of data) {
+        if (product.title.toLowerCase().includes(searchInput.toLowerCase())) {
+          searchProduct.push(product);
+          document.getElementById("all-products").textContent = '';
+          document.getElementById('spinner').classList.add("visually-hidden");
+          showProducts(searchProduct);
+        }
+        else {
+          document.getElementById("all-products").textContent = '';
+          document.getElementById('spinner').classList.add("visually-hidden");
+          document.getElementById('search-error').style.display = 'block';
+        }
+      }
+      document.getElementById('input-field').value = '';
+    });
+}

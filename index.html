@@ -26,11 +26,19 @@
   <main class="main">
     <div class="search-field">
       <div class="search-box">
-        <input id="input-field" class="search-field" type="text" />
+        <input id="input-field" class="search-field" type="text" placeholder="Search..."/>
         <button type="button" class="btn-primary search-button" data-toggle="button" aria-pressed="false"
-          autocomplete="off" id="search-btn" onclick="loadProducts()">
+          autocomplete="off" id="search-btn" onclick="searchProducts()">
           Search
         </button>
+      </div>
+    </div>
+    <div>
+      <p id="search-error">No result Found...</p>
+      <div id="spinner" class="d-flex justify-content-center visually-hidden">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
     </div>
     <div class="row">
