@@ -135,6 +135,12 @@ const searchProducts = () => {
   document.getElementById('spinner').classList.remove("visually-hidden");
   document.getElementById("all-products").textContent = '';
   document.getElementById('search-error').style.display = 'none';
+  document.getElementById('empty-search-error').style.display = 'none';
+  if (searchInput==='') {
+    document.getElementById('empty-search-error').style.display = 'block';
+    document.getElementById('spinner').classList.add("visually-hidden");
+    return
+  }
   const searchBtn = document.getElementById('search-btn');
   const url = `https://fakestoreapi.com/products`;
   fetch(url)
@@ -154,6 +160,7 @@ const searchProducts = () => {
           document.getElementById("all-products").textContent = '';
           document.getElementById('spinner').classList.add("visually-hidden");
           document.getElementById('search-error').style.display = 'block';
+          document.getElementById('empty-search-error').style.display = 'none';
         }
       }
       document.getElementById('input-field').value = '';

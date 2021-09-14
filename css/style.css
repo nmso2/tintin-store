@@ -31,6 +31,12 @@ body {
 #search-error{
   text-align: center;
   display: none;
+  color: red;
+}
+#empty-search-error{
+  text-align: center;
+  display: none;
+  color: red;
 }
 #all-products {
   margin-top: 15px;
